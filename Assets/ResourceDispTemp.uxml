@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="UIPracticeUSS.uss" />
+    <ui:VisualElement style="height: 205px; width: 143px; background-color: rgb(0, 0, 0);">
+        <ui:Label text="Round: " display-tooltip-when-elided="true" name="RoundCnt" class="ResourceText" />
+        <ui:Label text="Gold: " display-tooltip-when-elided="true" name="GoldCnt" class="ResourceText" style="font-size: 16px; color: rgb(105, 229, 212);" />
+        <ui:Label text="Wood: " display-tooltip-when-elided="true" name="WoodCnt" class="ResourceText" />
+        <ui:Label text="Stone: " display-tooltip-when-elided="true" name="StoneCnt" class="ResourceText" />
+        <ui:Label text="Food: " display-tooltip-when-elided="true" name="FoodCnt" class="ResourceText" />
+        <ui:Label text="Pop: " display-tooltip-when-elided="true" name="PopCnt" class="ResourceText" style="-unity-text-align: upper-left; white-space: nowrap;" />
+        <ui:Label text="Militia: " display-tooltip-when-elided="true" name="MilCnt" class="ResourceText" />
+        <ui:Label text="Know: " display-tooltip-when-elided="true" name="KnoCnt" class="ResourceText" />
+        <ui:Label text="Morale: " display-tooltip-when-elided="true" name="MoraleCnt" class="ResourceText" />
+    </ui:VisualElement>
+</ui:UXML>

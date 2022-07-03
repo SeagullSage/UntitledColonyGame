@@ -1,0 +1,4 @@
+.ResourceText {
+    color: rgb(101, 221, 205);
+    height: 15px;
+}
