@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Building 
 {
+    // Virtual parent class for all building class scripts
     // No need for collision parameters, interfaced only with terrainInteract
 
     // Data
@@ -22,7 +23,7 @@ public class Building
         // To be given values in header
 
     public bool canMultiple;                            // Can multiple of these buildings be placed?
-    public int[] constructCost = new int[] {0,0,0,0};   // Cost of each resource to build (gold,wood,stone,food)
+    public int[] constructCost = new int[] {0,0,0,0,0};   // Cost of each resource to build (gold,wood,stone,food,special) We might instead do this in GameManager
    
         // To be set in Awake/Start function (if it actually matters)
 
@@ -41,7 +42,7 @@ public class Building
     public Building(string type)
     {
         Debug.Log(type + " is being constructing in building class");
-        salvageAmount = new int[] {0,0,0,0};   
+        salvageAmount = new int[] {0,0,0,0,0};   
         buildingType = type;
         
     }

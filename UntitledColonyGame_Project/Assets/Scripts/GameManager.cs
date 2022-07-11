@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour
     public int taxRate;
     public int taxCollect;
     public int theifStrength;
-    
+
     public float productionRate;
     public float disasterRate;
 
     // Game Tracking
 
-        // Eventually for different civs, game modes, and difficulty settings. Largely for game intialization.
+    // Eventually for different civs, game modes, and difficulty settings. Largely for game intialization.
     public string gameMode;
     public string colonyType;
     public int gameDifficulty;
@@ -46,11 +46,13 @@ public class GameManager : MonoBehaviour
     public int landTotal;
     public int disasterTotal;
 
-        // Keeps track of when user clicks to progress round, or does something (buy, build) that requires updating of resources/unlocks 
+    // Keeps track of when user clicks to progress round, or does something (buy, build) that requires updating of resources/unlocks 
     public bool nextRound;
     public bool update;
 
     // Building and Research Unlock Track
+
+    public int[] houseCost = new int[] {0,15,0,10,0,0,0,0};
 
 
 

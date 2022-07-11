@@ -16,6 +16,8 @@ public class Terrain : MonoBehaviour
     public int reserve;
     public Building building;
 
+    public int productionMod;
+
     public bool revealed;
 
     protected virtual void Start()
@@ -38,7 +40,11 @@ public class Terrain : MonoBehaviour
 
     protected virtual void Event()
     {
-
+        // Some terrain have specific events
+            // Volcanos - Erruption
+            // Swamps - Floods
+        // Some events can occur on any terrain
+            // Earthquake, Meteor
     }
 
    

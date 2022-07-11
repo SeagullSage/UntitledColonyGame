@@ -8,6 +8,7 @@ public class TerrainInteractMngr : MonoBehaviour
 {
     public GameObject UIElementPrefab;
     public GameObject UIElement;
+    public GameManager gameManager;
 
     private bool clicked;
     private bool clickAble = true;
@@ -63,15 +64,24 @@ public class TerrainInteractMngr : MonoBehaviour
             // of houses when button is clicked. Look into better way to avoid multiple clicks per click
             if (terrain.building == null)  
             {
-                Debug.Log("House Constructed!");
-                terrain.AddBuilding("House");
-                update = true;
+                // if (can afford)
+                if (gameManager.wood >= gameManager.houseCost[1] && gameManager.food >= gameManager.houseCost[3])
+                {
+                    gameManager.wood -= gameManager.houseCost[1];
+                    gameManager.food -= gameManager.houseCost[3];
+                    Debug.Log("House Constructed!");
+                    terrain.AddBuilding("House");
+                    update = true;
+                }
+                //else This also prints like a gagillion times because of the multiple times per click error explained (and currently unresolved) above
+                //{
+                //    Debug.Log("Can't Afford!");
+                //}
             }
         };
 
         if (update)
         {
-            ClearUI();
             UpdateUI();
             update = false;
         }
@@ -90,15 +100,15 @@ public class TerrainInteractMngr : MonoBehaviour
 
     private void UpdateUI()
     {
-        UIroot.Q<Label>("TypeDisp").text += " " + terrain.terrainType;
-        UIroot.Q<Label>("ReserveDisp").text += " " + terrain.reserve.ToString() + " " + terrain.resourceType;
+        UIroot.Q<Label>("TypeDisp").text = "Type: " + terrain.terrainType;
+        UIroot.Q<Label>("ReserveDisp").text = "Reserve " + terrain.reserve.ToString() + " " + terrain.resourceType;
         if (terrain.building != null)
         {
-            UIroot.Q<Label>("BuildingDisp").text += " " + terrain.building.buildingType;
+            UIroot.Q<Label>("BuildingDisp").text = terrain.building.buildingType;
         }
         else
         {
-            UIroot.Q<Label>("BuildingDisp").text += " None";
+            UIroot.Q<Label>("BuildingDisp").text = "No Building";
         }
     }
 
