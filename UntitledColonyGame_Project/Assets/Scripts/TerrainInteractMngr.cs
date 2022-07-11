@@ -67,10 +67,11 @@ public class TerrainInteractMngr : MonoBehaviour
                 // if (can afford)
                 if (gameManager.wood >= gameManager.houseCost[1] && gameManager.food >= gameManager.houseCost[3])
                 {
-                    gameManager.wood -= gameManager.houseCost[1];
-                    gameManager.food -= gameManager.houseCost[3];
                     Debug.Log("House Constructed!");
                     terrain.AddBuilding("House");
+                    gameManager.wood -= gameManager.houseCost[1];
+                    gameManager.food -= gameManager.houseCost[3];
+                    gameManager.pop += terrain.building.population;
                     update = true;
                 }
                 //else This also prints like a gagillion times because of the multiple times per click error explained (and currently unresolved) above

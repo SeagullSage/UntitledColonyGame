@@ -29,7 +29,15 @@ public class Terrain : MonoBehaviour
     public void AddBuilding(string type)
     {
         Debug.Log("Constructing building in terrain class!");
-        building = new Building(type);
+        switch (type)
+        {
+            case "House":
+                building = new House();
+                break;
+            default:
+                Debug.Log("BUILDING ERROR - NULL BUILDING");
+                break;
+        }
     }
 
     protected virtual void RoundUpdate()

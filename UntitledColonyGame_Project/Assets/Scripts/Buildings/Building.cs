@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building 
+public class Building
 {
     // Virtual parent class for all building class scripts
     // No need for collision parameters, interfaced only with terrainInteract
 
+    public GameManager gameManager;
+
     // Data
         // Identity
     public string buildingType;
+    public int population = 0; // If building adds to pop, value is stored here
         // Production
     public float prodScale;
     public int prodRate;
@@ -39,13 +42,17 @@ public class Building
 
 
     // Start is called before the first frame update
-    public Building(string type)
+    public void Start()
     {
-        Debug.Log(type + " is being constructing in building class");
-        salvageAmount = new int[] {0,0,0,0,0};   
-        buildingType = type;
-        
+    //
     }
+    //public Building(string type)
+    //{
+    //    Debug.Log(type + " is being constructing in building class");
+    //    salvageAmount = new int[] {0,0,0,0,0};   
+    //    buildingType = type;
+
+    //}
 
     //Performs any non-generation-of-main-resource based round actions; called from terrain
     protected virtual void RoundAction()
