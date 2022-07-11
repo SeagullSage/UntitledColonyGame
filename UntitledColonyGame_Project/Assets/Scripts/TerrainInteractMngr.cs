@@ -74,7 +74,7 @@ public class TerrainInteractMngr : MonoBehaviour
                     gameManager.pop += terrain.building.population;
                     update = true;
                 }
-                //else This also prints like a gagillion times because of the multiple times per click error explained (and currently unresolved) above
+                //else | This also prints like a gagillion times because of the multiple times per click error explained (and currently unresolved) above
                 //{
                 //    Debug.Log("Can't Afford!");
                 //}
