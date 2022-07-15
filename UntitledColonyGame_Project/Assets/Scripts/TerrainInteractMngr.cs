@@ -27,10 +27,8 @@ public class TerrainInteractMngr : MonoBehaviour
     private void Awake()
     {
         UIElement = Instantiate(UIElementPrefab);
-        Debug.Log(UIElement == null);
         UIroot = UIElement.GetComponent<UIDocument>().rootVisualElement;
         //UIroot.transform.scale = Vector3.zero;
-        Debug.Log(UIroot.Q<Label>("TypeDisp").text);
         update = false;
 
 
