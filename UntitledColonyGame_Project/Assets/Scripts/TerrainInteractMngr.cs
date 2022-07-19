@@ -15,6 +15,8 @@ public class TerrainInteractMngr : MonoBehaviour
     [SerializeField]
     Terrain terrain;
 
+    public BuildingInteractMngr buildingInteractMngr;
+
     Vector3 mousePos;
     Vector2 mousePos2D;
     RaycastHit2D hit;
@@ -28,7 +30,7 @@ public class TerrainInteractMngr : MonoBehaviour
     {
         UIElement = Instantiate(UIElementPrefab);
         UIroot = UIElement.GetComponent<UIDocument>().rootVisualElement;
-        //UIroot.transform.scale = Vector3.zero;
+        ClearUI();
         update = false;
 
 
@@ -44,15 +46,17 @@ public class TerrainInteractMngr : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "Terrain")
                 {
-                    Debug.Log("terrain selected");
-                    //UIroot.transform.scale = Vector3.one;
                     terrain = hit.collider.GetComponent<Terrain>();
                     update = true;
+                    if (terrain.building != null){
+                        RefreshBuildInteract();
+                    }
+
                 }
             }
-            else
+            else if(hit.collider == null)
             {
-                //UIroot.transform.scale = Vector3.zero;
+                //ClearUI();
             }
         }
 
@@ -71,6 +75,7 @@ public class TerrainInteractMngr : MonoBehaviour
                     gameManager.food -= gameManager.houseCost[3];
                     gameManager.pop += terrain.building.population;
                     update = true;
+                    RefreshBuildInteract();
                 }
                 //else | This also prints like a gagillion times because of the multiple times per click error explained (and currently unresolved) above
                 //{
@@ -99,6 +104,8 @@ public class TerrainInteractMngr : MonoBehaviour
 
     private void UpdateUI()
     {
+        UIroot.Q<Button>("ConHouse").SetEnabled(true);
+        UIroot.Q<Button>("ConHouse").visible = true;
         UIroot.Q<Label>("TypeDisp").text = "Type: " + terrain.terrainType;
         UIroot.Q<Label>("ReserveDisp").text = "Reserve " + terrain.reserve.ToString() + " " + terrain.resourceType;
         if (terrain.building != null)
@@ -114,8 +121,18 @@ public class TerrainInteractMngr : MonoBehaviour
     private void ClearUI()
     {
         Debug.Log("clearing UI");
-        UIroot.Q<Label>("TypeDisp").text = UIroot.Q<Label>("TypeDisp").text.Remove(UIroot.Q<Label>("TypeDisp").text.IndexOf(':') + 1);
-        UIroot.Q<Label>("ReserveDisp").text = UIroot.Q<Label>("ReserveDisp").text.Remove(UIroot.Q<Label>("ReserveDisp").text.IndexOf(':') + 1);
-        UIroot.Q<Label>("BuildingDisp").text = UIroot.Q<Label>("BuildingDisp").text.Remove(UIroot.Q<Label>("BuildingDisp").text.IndexOf(':') + 1);
+        UIroot.Q<Label>("TypeDisp").text = "";
+        UIroot.Q<Label>("ReserveDisp").text = "";
+        UIroot.Q<Label>("BuildingDisp").text = "";
+        UIroot.Q<Button>("ConHouse").SetEnabled(false);
+        UIroot.Q<Button>("ConHouse").visible = false;
+
+    }
+
+    void RefreshBuildInteract()
+    {
+        buildingInteractMngr.building = terrain.building;
+        buildingInteractMngr.terrain = terrain;
+        buildingInteractMngr.update = true;
     }
 }

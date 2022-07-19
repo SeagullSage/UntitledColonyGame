@@ -922,6 +922,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1390788961}
+    - target: {fileID: 961344839625206557, guid: 5e242d33a854b4e45b9f65a3ad36a736, type: 3}
+      propertyPath: buildingInteractMngr
+      value: 
+      objectReference: {fileID: 1259513178}
     - target: {fileID: 961344839625206562, guid: 5e242d33a854b4e45b9f65a3ad36a736, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2155,9 +2159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe83c81fd5c1d48a7389fc7c567654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIElementPrefab: {fileID: 0}
+  UIElementPrefab: {fileID: 3989967292044484967, guid: d95f8fdfee432d24c9807bb4fbaee4bb, type: 3}
   UIElement: {fileID: 0}
   gameManager: {fileID: 0}
+  terrain: {fileID: 0}
+  update: 0
 --- !u!4 &1259513179
 Transform:
   m_ObjectHideFlags: 0
